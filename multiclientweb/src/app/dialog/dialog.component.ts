@@ -20,7 +20,7 @@ export class DialogComponent implements OnInit {
       productCost : ['',Validators.required],
       productDescription : ['',Validators.required]
     })
-   if(this.editData){
+   if(this.editData){    
     this.productForm.controls['productName'].setValue(this.editData.productName);
     this.productForm.controls['productCategory'].setValue(this.editData.productCategory);
     this.productForm.controls['productCost'].setValue(this.editData.productCost);
@@ -51,12 +51,12 @@ export class DialogComponent implements OnInit {
   }
 
   updateProduct(){
-    this.api.putProduct(this.productForm.value)
+    this.api.putProduct(this.productForm.value, this.editData.productId)
     .subscribe({
       next:(res)=>{
         alert("Product updated Succesfully");
         this.productForm.reset();
-        this.dialogRef.close('update');
+        this.dialogRef.close('save');
       },
       error:()=>{
         alert("Error while updating the data");

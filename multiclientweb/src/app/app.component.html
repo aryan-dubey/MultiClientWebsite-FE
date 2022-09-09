@@ -38,10 +38,8 @@
         <ng-container matColumnDef="productCost">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Cost </th>
           <td mat-cell *matCellDef="let row"> {{row.productCost | currency:"INR":"symbol"}} </td>
-        </ng-container>
-    
-       
-        
+        </ng-container>  
+               
     
         <!-- Description Column -->
         <ng-container matColumnDef="productDescription">
@@ -57,7 +55,7 @@
               <mat-icon>edit</mat-icon>
              </button>
              
-             <button mat-icon-button color="warn">
+             <button (click)="deleteProduct(row.productId)" mat-icon-button color="warn">
               <mat-icon>delete</mat-icon>
              </button>
           </td>
