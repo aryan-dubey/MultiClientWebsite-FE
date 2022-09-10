@@ -20,6 +20,7 @@ export class DialogComponent implements OnInit {
       productCost : ['',Validators.required],
       productDescription : ['',Validators.required]
     })
+    
    if(this.editData){    
     this.productForm.controls['productName'].setValue(this.editData.productName);
     this.productForm.controls['productCategory'].setValue(this.editData.productCategory);

@@ -23,7 +23,7 @@ export class ApiService {
   }
 
   deleteProduct(id : number){
-    return this.http.delete<string>(`http://localhost:8080/delproduct/1/${id}`)
+    return this.http.delete<any>(`http://localhost:8080/delproduct/1/${id}`)
 
   }  
 }
