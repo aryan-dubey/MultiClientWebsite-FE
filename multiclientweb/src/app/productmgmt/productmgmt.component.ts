@@ -1,20 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
-import { DialogComponent } from './dialog/dialog.component';
-import { ApiService } from './services/api.service';
+import { DialogComponent } from '../dialog/dialog.component';
+import { ApiService } from '../services/api.service';
 
 import {AfterViewInit, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  templateUrl: './productmgmt.component.html',
+  styleUrls: ['./productmgmt.component.scss']
 })
-export class AppComponent implements OnInit {
+export class ProductMgmtComponent implements OnInit {
   title = 'multiclientweb';
 
   displayedColumns: string[] = ['productId', 'productName', 'productCategory', 'productDescription', 'productCost', 'action'];
@@ -23,7 +24,7 @@ export class AppComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private dialog : MatDialog, private api : ApiService){
+  constructor(private dialog : MatDialog, private api : ApiService, private snackBar:MatSnackBar){
 
   }
   ngOnInit(): void {
@@ -71,7 +72,10 @@ export class AppComponent implements OnInit {
       next:(res)=>{        
       },
       error:(err)=>{
-        alert("Product Deleted Successfully")
+        this.snackBar.open("Product Deleted Successfully", "OK", {
+          duration: 5000,
+          verticalPosition: 'top'
+        });
         this.getAllProducts();
       }
     })

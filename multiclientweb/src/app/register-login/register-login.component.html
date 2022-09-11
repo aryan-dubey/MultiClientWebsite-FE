@@ -1,0 +1,45 @@
+<div id="app">
+  <mat-toolbar color="primary" routerLinkActive="active">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>supervised_user_circle</mat-icon>
+  </button>
+  <span class ="btn-right" >Multi-Client-Web</span>
+   <button mat-icon-button>
+    <mat-icon href="/home" routerLink="home" >home</mat-icon>
+  </button>
+<a href="/admin" *ngIf="showAdminBoard"  class="mat-button-wrapper" routerLink="admin">
+  <button mat-flat-button color="primary" >Admin Board</button>
+</a>
+
+<a href="/user" *ngIf="isLoggedIn"  class="mat-button-wrapper" class="userbtn" routerLink="user">
+  <button mat-flat-button color="primary" >User</button>
+</a>
+
+<a href="/productmgmt" *ngIf="showModeratorBoard"   class="mat-button-wrapper" routerLink="productmgmt">
+  <button mat-flat-button color="primary" >Product Management</button>
+</a>
+
+<span class="example-spacer"></span>
+
+<a href="/register" *ngIf="!isLoggedIn"  class="mat-button-wrapper" routerLink="register">
+  <button mat-flat-button color="primary" >Sign Up</button>
+</a>
+
+<a href="/login"  *ngIf="!isLoggedIn" class="mat-button-wrapper" routerLink="login">
+  <button mat-flat-button color="primary" >Login</button>
+</a>
+
+<a href="/profile" *ngIf="isLoggedIn" class="mat-button-wrapper" routerLink="profile">
+  <button mat-flat-button color="primary" >{{ username }}</button>
+</a>
+
+<a class="mat-button-wrapper" *ngIf="isLoggedIn">
+  <button mat-flat-button color="primary" (click)="logout()">Logout</button>
+</a>
+</mat-toolbar>
+</div>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+
+  
